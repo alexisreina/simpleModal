@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+	<head>
+    <title>simpleModal</title>
+    <style type="text/css">
+      
+      .sm {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-25%);
+        transform: translate(-50%, -50%);
+        -webkit-transition: all 0.2s;
+        transition: all 0.2s;
+      }
+
+      .sm.theme {
+        padding: 2em;
+        border: #e4e4e4 1px solid;
+        box-shadow: 0 0 6px -3px #ccc;
+      }
+
+      .sm.fade {
+        display: block;
+        opacity: 0;
+      }
+      
+    </style>
+  </head>
+  <body>
+
+    <div class="sm theme" id="modal-1">
+      <header class="sm__header">
+        header
+      </header>
+      <div class="sm__body">
+        body
+      </div>
+      <footer class="sm__footer">
+        footer
+        <button class="js-sm__close">close</button>
+      </footer>
+    </div>
+
+
+    <div>
+      <button onclick="modal1.open()">open modal 1</button>
+      
+    </div>
+
+    <script src="SM.js"></script>
+    <script type="text/javascript">
+      
+      var modal1 = simpleModal('modal-1', {effect: 'fade'});
+
+      modal1.el.addEventListener('sm_close', function (e) { return console.log(e.type); }, false);
+      modal1.el.addEventListener('sm_open', function (e) { return console.log(e.type); }, false);
+      
+
+    </script>
+  </body>
+</html>
